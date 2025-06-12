@@ -156,17 +156,18 @@
     .social-bar a {
         width: 50px;
         height: 50px;
-        line-height: 50px;  /* 和高度一致，讓 icon 垂直置中 */
+        line-height: 50px; /* 讓內容垂直置中 */
         text-align: center;
         margin: 0 10px;
         font-size: 24px;
         color: #666;
         background-color: #bbb;
         border-radius: 50%;
+        padding: 0; /* 不需要 padding，否則會影響尺寸 */
         display: inline-block;
         vertical-align: middle;
-        transition: background-color 0.3s, color 0.3s;
     }
+
     .social-bar a:hover {
         background-color: #888;
         color: #fff;
@@ -175,18 +176,10 @@
 
     /* 手機版響應式調整 (max-width: 600px) */
     @media (max-width: 600px) {
-        /* Header 調整 */
         header {
-            padding: 15px 20px;
+            padding: 20px;
             flex-direction: column;
             align-items: flex-start;
-        }
-
-        /* Footer 調整 */
-        footer {
-            padding: 20px 10px;
-            font-size: 10px;
-            line-height: 1.4;
         }
 
         /* pyramid 排列和間距 */
@@ -216,7 +209,6 @@
             height: 240px;
         }
     }
-    
     </style>
 
     <script src="index.js"></script>
