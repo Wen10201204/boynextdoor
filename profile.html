@@ -297,7 +297,7 @@
             line-height: 0;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 600px) {
             header {
                 padding: 20px;
                 flex-direction: column;
@@ -366,7 +366,39 @@
                 font-size: 18px;
                 padding: 10px;
             }
+
+                /* 讓 info-section 的 gap 改小一點，更適合手機 */
+            .info-section {
+                gap: 20px;
+                padding: 0 10px;
+            }
+
+                /* members-list 改成1欄已經有了，可以讓成員字體更適合 */
+            .members-list .member {
+                font-size: 18px;
+                padding: 5px 0;
+            }
+
+                /* 確保 description 的文字不會太擠 */
+            .description {
+                font-size: 15px;
+                line-height: 1.5;
+                padding: 0 15px;
+            }
+
+                /* member-grid 已是1欄，如果還想更寬一點可調整 */
+            .member-grid {
+                padding: 0 15px;
+            }
+
+                /* photo-card hover 可能手機沒有 hover，改成點擊或去掉 */
+            .photo-card:hover {
+                transform: none;
+                box-shadow: none;
+            }
         }
+
+
     </style>
 
 
