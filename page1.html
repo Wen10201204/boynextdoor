@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8" />
+    <title>DISCOGRAPHY</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            overflow-x: hidden;
+            background-color: #fAfAfA;
+            color: #000;
+        }
+
+        .group-name span {
+            display: block;
+        }
+
+        .discography-hero {
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .album-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #2F5D8C;
+        }
+
+        .song-title {
+            font-size: 80px;
+            font-weight: bold;
+            margin-bottom: 40px;
+            letter-spacing: -2px;
+            color: #2F5D8C;
+        }
+
+        .song-description {
+            max-width: 1500px;
+            margin: 0 auto 60px;
+            line-height: 1.8;
+            font-size: 20px;
+            padding: 50px;
+            color: #2F5D8C;
+
+            display: flex;              /* 啟用 Flexbox */
+            justify-content: center;    /* 水平置中 */
+            align-items: center;        /* 垂直置中 */
+            text-align: center;         /* 文字置中 */
+            flex-direction: column;     /* 確保多行文字從上到下排列 */
+        }
+
+        .track-info {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 30px;
+            line-height: 1.8;
+            margin-bottom: 100px;
+            color: #2F5D8C;
+
+            display: flex;      /* 啟用 Flexbox */
+            justify-content: center; /* 水平置中 */
+            align-items: center; /* 垂直置中 */
+            flex-direction: column; /* 垂直排列內容 */
+        }
+
+        .track-label {
+            font-size: 60px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: center;
+            color: #2F5D8C;
+        }
+
+        .track-content {
+            font-size: 20px;
+            font-weight: normal;
+        }
+
+        .track-content hr {
+            display: none; /* 隱藏底線 */
+        }
+
+
+        footer {
+            padding: 40px;
+            text-align: center;
+            font-size: 12px;
+            line-height: 1.8;
+            margin-top: auto;
+            border-top: 1px solid #eee;
+        }
+
+
+        #backToTop {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 3rem;
+            height: 3rem;
+            background-color: #333;
+            color: white;
+            font-size: 1.5rem;
+            border: none;
+            border-radius: 50%;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            will-change: transform, opacity;
+            z-index: 1000;
+        }
+
+        #backToTop:hover {
+            transform: translateY(-4px);
+            background-color: #000;
+        }
+
+        #backToTop.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .footer-social-bar .social-icon {
+            display: inline-block;
+            margin: 0 10px;
+            font-size: 24px;
+            color: #555;
+            transition: 0.3s;
+        }
+
+        .footer-social-bar .social-icon:hover {
+            color: #000;
+        }
+
+        .social-bar a {
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            margin: 0 10px;
+            font-size: 24px;
+            color: #666;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+
+
+        .album-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+        }
+
+
+        .album img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+
+        .pyramid {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+
+        .item {
+            width: 300px;
+            height: 300px;
+            background-color: lightblue;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .item img {
+            width: 300px;        /* 跟 .item 寬度一樣 */
+            height: 300px;       /* 跟 .item 高度一樣 */
+            object-fit: cover;  /* 保持圖片裁切適合 */
+            display: block;     /* 去除底部空白 */
+        }
+
+
+
+        .song-list {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .song-list button {
+            padding: 10px;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            font-size: 18px;
+            color: gray;
+            transition: color 0.3s;
+            outline: none;
+            color: rgba(163, 163, 163, 0.88);
+        }
+
+        .song-list button.active {
+            color: black;
+            font-weight: bold;
+            color: #2F5D8C;
+        }
+
+        .video-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            margin-bottom: 100px;
+        }
+
+        iframe {
+            width: 80%;
+            max-width: 800px;
+            height: 450px;
+            border: none;
+        }
+
+
+        .social-bar {
+            background-color: #d3d3d3;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .social-bar a {
+            margin: 0 10px;
+            font-size: 24px;
+            color: #666;
+            background-color: #bbb;
+            border-radius: 50%;
+            padding: 12px;
+            display: inline-block;
+        }
+
+
+        .social-bar a {
+            width: 50px;               /* 固定寬度 */
+            height: 50px;              /* 固定高度 */
+            line-height: 20px;         /* 讓圖示垂直置中 */
+            text-align: center;        /* 水平置中 */
+            margin: 0 10px;
+            font-size: 24px;
+            color: #666;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            vertical-align: middle;    /* 避免下方出現空隙 */
+        }
+
+
+
+        @media (max-width: 768px) {
+            .song-title {
+                font-size: 40px;
+            }
+
+            .track-content {
+                font-size: 16px;
+            }
+
+            iframe {
+                height: 240px;
+            }
+        }
+    </style>
+
+    <script src="index.js"></script>
+
+</head>
+<body>
+    <div class="discography-hero">
+        <div class="album-title">1st Single</div>
+        <div class="song-title">WHO!</div>
+    </div>
+
+    <div class="pyramid">
+         <div class="item"><img src="img/1.jpg" alt="6" loading="lazy" /></div>
+    </div>
+
+
+
+    <div class="song-description">
+        <p>KOZ 엔터테인먼트가 긴 시간 준비한 팀, BOYNEXTDOOR가 드디어 데뷔 음반 [WHO!]를 발표한다.<hr/><br>
+
+            BOYNEXTDOOR는 '옆집의 소년들'이라는 의미를 담고 있으며, 성호, 리우, 명재현, 태산, 이한, 운학까지 총 6인으로 구성되어 있다. 친근하게 느껴지는 그 이름처럼 BOYNEXTDOOR는 듣기 편하면서도 독창적인 이지리스닝 트랙을 기반으로 일상을 이야기하고 그 속의 다양한 감정을 풀어내며 공감을 추구한다.<hr/><br>
+
+            BOYNEXTDOOR는 음악의 본질이 감정의 교류에 있다고 믿는다. 음악을 틀면 나도 모르게 귀를 기울이고, 내 일 같은 가사에 고개를 끄덕이고, 잊고 있던 감정이 깨어나며, 각자의 시간을 돌이켜 보게 되는 것. BOYNEXTDOOR의 음악으로 닿고자 하는 지향점이다.<hr/><br>
+
+            그래서 BOYNEXTDOOR는 지금 이 시기의 청춘들이 할 수 있는 이야기에 집중한다. 첫 싱글 [WHO!]에서는 처음으로 누군가에게 순수한 설렘을 느끼고, 혼란을 겪고, 사랑을 노래하게 되는 일련의 과정을 그린다. 싱글에 수록된 모든 곡의 뮤직비디오를 제작한 건 직관적이고 유기적인 앨범의 스토리텔링과 곡마다 다른 음악적인 특징, 멤버들의 꾸밈없는 개성을 온전히 전달하기 위한 BOYNEXTDOOR의 노력이다.<hr/><br>
+
+            자유롭고 솔직하며, 트렌디하면서도 감수성 있는 모습이 볼수록 매력적인 팀. 팬에게는 색다른 신선함을, 대중에게는 편한 공감을 선사하는 팀. 당신이 새롭게 기억할 우리의 이름, BOYNEXTDOOR.<hr/><br>
+        <p>[ABOUT TRACKS]<hr/>
+            문득 찾아온 사랑에 BOYNEXTDOOR의 마음이 들썩인다. 낯선 설렘과 벅차오르는 감정에 혼란스러운 여섯 청춘들. 거듭되는 고민 끝에 마침내 고백을 결심하게 된다.<hr/><br>
+
+            그런데, 혹시 나만 좋아하는 거 아니지?<hr/><br>
+
+
+            01. 돌아버리겠다<hr/>
+            '돌아버리겠다, but I like you'<hr/>
+            처음 사랑에 빠진다면 어떤 마음이 들까? 착각이 아닌지 고민하고, 사소한 행동 하나하나에 신경이 쓰이고, 그러다 그 사람의 모든 게 좋아져서 어찌할 줄 모르게 되지 않을까? ‘돌아버리겠다’는 우연한 사랑에 빠진 후 꼬리를 무는 고민과 혼란스러운 감정, 터질 것처럼 요동치는 사랑의 마음을 친구에게 고민 상담하듯 털어놓는 곡이다. 돌아버릴 것 같지만, 네가 좋은걸.<hr/><br>
+
+            02. One and Only<hr/>
+            'Listen, I'm the One and Only'<hr/>
+            하지만 고백이란 욕심으로는 해결될 수 없는 일이다. 상대도 날 좋아할 거라는 믿음이 필요하고, 내가 그래도 괜찮은 사람이라는 확신이 필요하니까. 고민 끝에 내린 결심이 후회로 남지 않도록 멋있어 보이기 위해 옷을 고르고, 향수를 뿌리며 마음을 가다듬어 본다. 들어봐, 나는 One and Only, 누구보다 멋진 사람이니까!<hr/><br>
+
+            03. Serenade<hr/>
+            ‘My first serenade, I swear you’ll like it!’<hr/>
+            아무리 멋을 부리고 마음을 다잡아도 머리끝까지 긴장되는 건 피할 수 없다. 얼굴 표정도 굳고, 다리도 떨리고, 심장까지 저릿저릿한 기분은 처음이다. 파도처럼 밀려오는 복합적인 감정을 붙잡고 진심을 담아 첫 세레나데를 부른다. 가진 건 아무것도 없지만, 누구보다 사랑할 자신은 있어.</p>
+    </div>
+
+    <div class="track-info">
+        <div class="track-section">
+            <div class="track-label">TRACK</div>
+            <div class="track-content">
+                TITLE 01 돌아버리겠다<br>
+
+                TITLE 02 One and Only<br>
+
+                TITLE 03 Serenade<br></div>
+        </div>
+    </div>
+
+
+    <div class="track-label">VIDEO</div>
+    <div class="song-list">
+        <button data-video="https://www.youtube.com/embed/_ItgMr1bMYc" class="active">돌아버리겠다</button>
+        <button data-video="https://www.youtube.com/embed/jizAb-SLvtM">One and Only</button>
+        <button data-video="https://www.youtube.com/embed/Uyq9OE8lIz8">Serenade</button>
+    </div>
+    <div class="video-container">
+        <iframe id="videoPlayer" src="https://www.youtube.com/embed/_ItgMr1bMYc" allowfullscreen></iframe>
+    </div>
+
+    <script>
+        const buttons = document.querySelectorAll('.song-list button');
+        const videoPlayer = document.getElementById('videoPlayer');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                // 移除所有按鈕的 active 狀態
+                buttons.forEach(btn => btn.classList.remove('active'));
+                // 為當前按鈕添加 active 狀態
+                button.classList.add('active');
+                // 切換影片
+                const videoURL = button.getAttribute('data-video');
+                videoPlayer.src = videoURL;
+            });
+        });
+    </script>
+
+    <div class="social-bar">
+        <a href="https://x.com/BOYNEXTDOOR_KOZ" target="_blank"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://www.facebook.com/share/1AbrE2jmSc/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/boynextdoor_official" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://youtube.com/@boynextdoor_official" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="https://weibo.com/u/7832571640" target="_blank"><i class="fab fa-weibo"></i></a>
+        <a href="https://www.tiktok.com/@boynextdoor_official" target="_blank"><i class="fab fa-tiktok"></i></a>
+    </div>
+
+    <footer>
+        KOZ ENTERTAINMENT<br>韓國首爾龍山區漢江大路42號 04389<br>ALL RIGHTS RESERVED. © 2025 KOZ ENTERTAINMENT<br>隱私政策
+    </footer>
+
+<button id="backToTop" title="回到上方">↑</button>
+
+</body>
+</html>

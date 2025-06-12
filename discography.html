@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8" />
+    <title>DISCOGRAPHY</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+    /* ------------------ Global Styles ------------------ */
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+    }
+
+    body {
+    overflow-x: hidden;
+    background-color: #fAfAfA;
+    color: #000;
+    }
+
+    /* ------------------ Header ------------------ */
+    header {
+    padding: 30px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #fAfAfA;
+    }
+
+    /* ------------------ Footer ------------------ */
+    footer {
+    padding: 40px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.8;
+    margin-top: auto;
+    border-top: 1px solid #eee;
+    }
+
+    /* ------------------ Back to Top Button ------------------ */
+    #backToTop {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 3rem;
+    height: 3rem;
+    background-color: #333;
+    color: white;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    #backToTop:hover {
+    transform: translateY(-4px);
+    background-color: #000;
+    }
+
+    #backToTop.show {
+    opacity: 1;
+    visibility: visible;
+    }
+    /* ------------------ Pyramid Layout ------------------ */
+    .pyramid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 100px;
+    margin-top: 100px;
+    }
+
+    .row {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    padding: 30px;
+    flex-wrap: wrap;
+    }
+
+    .item {
+    width: 300px;
+    height: 300px;
+    background-color: lightblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    }
+
+    .item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    }
+
+    .empty {
+    visibility: hidden;
+    }
+
+    /* ------------------ Image Hover Effects ------------------ */
+    .image-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+    cursor: pointer;
+    }
+
+    .image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    }
+
+    .image-container .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+    transition: opacity 0.3s ease;
+    }
+
+    .image-container:hover img {
+    transform: scale(1.1);
+    }
+
+    .image-container:hover .overlay {
+    opacity: 1;
+    }
+
+    .social-bar {
+        background-color: #d3d3d3;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .social-bar a {
+        width: 50px;
+        height: 50px;
+        line-height: 50px;  /* 和高度一致，讓 icon 垂直置中 */
+        text-align: center;
+        margin: 0 10px;
+        font-size: 24px;
+        color: #666;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        vertical-align: middle;
+        transition: background-color 0.3s, color 0.3s;
+    }
+    .social-bar a:hover {
+        background-color: #888;
+        color: #fff;
+    }
+
+
+    @media (max-width: 768px) {
+        .item {
+            max-width: 100%;
+            flex: 1 1 100%;
+        }
+        iframe {
+            height: 240px;
+        }
+    }
+
+
+    @media (max-width: 600px) {
+        .social-bar a {
+            margin: 10px 5px;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 18px;
+        }
+    }
+
+    </style>
+
+    <script src="index.js"></script>
+
+</head>
+<body>
+<div class="pyramid">
+    <div class="row">
+        <div class="item">
+            <a href="page3.html" class="image-container">
+                <img src="img/3.jpg" alt="2nd EP HOW? 專輯封面" />
+                <div class="overlay">
+                    <div class="text">2nd EP<hr />HOW?</div>
+                </div>
+            </a>
+        </div>
+        <div class="item">
+            <a href="page2.html" class="image-container">
+                <img src="img/2.jpg" alt="2" />
+                <div class="overlay">
+                    <div class="text">1st EP<hr />WHY..</div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="row row-bottom">
+        <div class="item empty"></div>
+        <div class="item">
+            <a href="page1.html" class="image-container">
+                <img src="img/1.jpg" alt="1" />
+                <div class="overlay">
+                    <div class="text">1st Single<hr />WHO!</div>
+                </div>
+            </a>
+        </div>
+        <div class="item empty"></div>
+    </div>
+</div>
+
+<div class="social-bar">
+    <a href="https://x.com/BOYNEXTDOOR_KOZ" target="_blank"><i class="fab fa-x-twitter"></i></a>
+    <a href="https://www.facebook.com/share/1AbrE2jmSc/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://www.instagram.com/boynextdoor_official" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://youtube.com/@boynextdoor_official" target="_blank"><i class="fab fa-youtube"></i></a>
+    <a href="https://weibo.com/u/7832571640" target="_blank"><i class="fab fa-weibo"></i></a>
+    <a href="https://www.tiktok.com/@boynextdoor_official" target="_blank"><i class="fab fa-tiktok"></i></a>
+</div>
+
+    <footer>
+        KOZ ENTERTAINMENT<br>韓國首爾龍山區漢江大路42號 04389<br>ALL RIGHTS RESERVED. © 2025 KOZ ENTERTAINMENT<br>隱私政策
+    </footer>
+
+<button id="backToTop" title="回到上方">↑</button>
+
+        <script>
+            const gallery = document.querySelector('.pyramid');
+
+
+            function updateAlbumSizes() {
+                const albums = gallery.querySelectorAll('.item');
+                const galleryRect = gallery.getBoundingClientRect();
+                const centerX = galleryRect.left + galleryRect.width / 2;
+
+                albums.forEach(album => {
+                    const rect = album.getBoundingClientRect();
+                    const albumCenter = rect.left + rect.width / 2;
+                    const distance = Math.abs(centerX - albumCenter);
+
+                    album.classList.remove('small', 'middle', 'large');
+                    if (distance < 80) {
+                        album.classList.add('large');
+                    } else if (distance < 180) {
+                        album.classList.add('middle');
+                    } else {
+                        album.classList.add('small');
+                    }
+                });
+            }
+
+            function centerAlbum(album) {
+                const galleryRect = gallery.getBoundingClientRect();
+                const albumRect = album.getBoundingClientRect();
+
+                const albumCenter = albumRect.left + albumRect.width / 2;
+                const galleryCenter = galleryRect.left + galleryRect.width / 2;
+
+                const offset = albumCenter - galleryCenter;
+
+                // scrollBy 是相對的，效果較佳
+                gallery.scrollBy({
+                    left: offset,
+                    behavior: 'smooth'
+                });
+
+                // 儘早更新 class，不需等 500ms
+                setTimeout(updateAlbumSizes, 100);
+            }
+
+
+
+
+            // 點擊專輯時置中顯示
+            gallery.addEventListener('click', (e) => {
+                const album = e.target.closest('.album');
+                if (album) centerAlbum(album);
+            });
+
+            window.addEventListener('load', () => {
+                const images = document.querySelectorAll('.album img');
+                let loaded = 0;
+                images.forEach(img => {
+                    if (img.complete) {
+                        loaded++;
+                    } else {
+                        img.addEventListener('load', () => {
+                            loaded++;
+                            if (loaded === images.length) updateAlbumSizes();
+                        });
+                    }
+                });
+                if (loaded === images.length) updateAlbumSizes();
+            });
+
+
+            // 滾動後自動更新樣式
+            let scrollTimeout;
+            gallery.addEventListener('scroll', () => {
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(updateAlbumSizes, 150);
+            });
+
+        </script>
+
+</body>
+</html>

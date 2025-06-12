@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8" />
+    <title>DISCOGRAPHY</title>
+    <link rel="stylesheet" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            overflow-x: hidden;
+            background-color: #fAfAfA;
+            color: #000;
+        }
+
+        header {
+            padding: 30px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #fAfAfA;
+        }
+
+        .group-name span {
+            display: block;
+        }
+
+        .discography-hero {
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .album-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #2F5D8C;
+        }
+
+        .song-title {
+            font-size: 80px;
+            font-weight: bold;
+            margin-bottom: 40px;
+            letter-spacing: -2px;
+            color: #2F5D8C;
+        }
+
+        .song-description {
+            max-width: 1500px;
+            margin: 0 auto 60px;
+            line-height: 1.8;
+            font-size: 20px;
+            padding: 50px;
+            color: #2F5D8C;
+
+            display: flex;              /* 啟用 Flexbox */
+            justify-content: center;    /* 水平置中 */
+            align-items: center;        /* 垂直置中 */
+            text-align: center;         /* 文字置中 */
+            flex-direction: column;     /* 確保多行文字從上到下排列 */
+        }
+
+        .track-info {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 30px;
+            line-height: 1.8;
+            margin-bottom: 100px;
+            color: #2F5D8C;
+
+            display: flex;      /* 啟用 Flexbox */
+            justify-content: center; /* 水平置中 */
+            align-items: center; /* 垂直置中 */
+            flex-direction: column; /* 垂直排列內容 */
+        }
+
+        .track-label {
+            font-size: 60px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: center;
+            color: #2F5D8C;
+        }
+
+        .track-content {
+            font-size: 20px;
+            font-weight: normal;
+            margin-left: 150px;
+        }
+
+        .track-content hr {
+            display: none; /* 隱藏底線 */
+        }
+
+        footer {
+            padding: 40px;
+            text-align: center;
+            font-size: 12px;
+            line-height: 1.8;
+            margin-top: auto;
+            border-top: 1px solid #eee;
+        }
+
+
+        #backToTop {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 3rem;
+            height: 3rem;
+            background-color: #333;
+            color: white;
+            font-size: 1.5rem;
+            border: none;
+            border-radius: 50%;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            will-change: transform, opacity;
+            z-index: 1000;
+        }
+
+        #backToTop:hover {
+            transform: translateY(-4px);
+            background-color: #000;
+        }
+
+        #backToTop.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .footer-social-bar .social-icon {
+            display: inline-block;
+            margin: 0 10px;
+            font-size: 24px;
+            color: #555;
+            transition: 0.3s;
+        }
+
+        .footer-social-bar .social-icon:hover {
+            color: #000;
+        }
+
+        .social-bar a {
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            margin: 0 10px;
+            font-size: 24px;
+            color: #666;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+
+
+        .album-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+        }
+
+
+        .album img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+
+        .pyramid {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+
+        .item {
+            width: 300px;
+            height: 300px;
+            background-color: lightblue;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .item img {
+            width: 300px;        /* 跟 .item 寬度一樣 */
+            height: 300px;       /* 跟 .item 高度一樣 */
+            object-fit: cover;  /* 保持圖片裁切適合 */
+            display: block;     /* 去除底部空白 */
+        }
+
+
+
+        .song-list {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .song-list button {
+            padding: 10px;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            font-size: 18px;
+            color: gray;
+            transition: color 0.3s;
+            outline: none;
+            color: #2F5D8C;
+        }
+
+
+        .video-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            margin-bottom: 100px;
+        }
+
+        iframe {
+            width: 80%;
+            max-width: 800px;
+            height: 450px;
+            border: none;
+
+        }
+
+        .special-shift {
+            margin-left: -60px; /* 負值會往左推，調整這個值來控制距離 */
+        }
+
+
+        .social-bar {
+            background-color: #d3d3d3;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .social-bar a {
+            margin: 0 10px;
+            font-size: 24px;
+            color: #666;
+            background-color: #bbb;
+            border-radius: 50%;
+            padding: 12px;
+            display: inline-block;
+        }
+
+
+        .social-bar a {
+            width: 50px;               /* 固定寬度 */
+            height: 50px;              /* 固定高度 */
+            line-height: 20px;         /* 讓圖示垂直置中 */
+            text-align: center;        /* 水平置中 */
+            margin: 0 10px;
+            font-size: 24px;
+            color: #666;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            vertical-align: middle;    /* 避免下方出現空隙 */
+        }
+
+        @media (max-width: 768px) {
+            .item {
+                max-width: 100%;
+                flex: 1 1 100%;
+            }
+            .song-title {
+                font-size: 40px;
+            }
+            .track-content {
+                font-size: 16px;
+            }
+            iframe {
+                height: 240px;
+            }
+        }
+    </style>
+
+    <script src="index.js"></script>
+
+</head>
+<body>
+    <div class="discography-hero">
+        <div class="album-title">2nd EP</div>
+        <div class="song-title">HOW?</div>
+    </div>
+    <div class="pyramid">
+            <div class="item"><img src="img/3.jpg" alt="6" /></div>
+        </div>
+    </div>
+
+
+    <div class="song-description">
+        <p>‘첫사랑 이야기 3부작’의 하이라이트 미니 2집 [HOW?]<hr/>
+        누구나 경험할 수 있고, 또 이미 겪어 봤을 청춘들의 이야기<hr/>
+        ‘옆집 소년들’다운 친근함에 키치한 감성 더한 타이틀곡 ‘Earth, Wind & Fire’<hr/><br></p>
+
+        BOYNEXTDOOR의 미니 2집 [HOW?]는 ‘첫사랑 이야기 3부작’의 대미를 장식하는 앨범으로, 데뷔 싱글 [WHO!]와 미니 1집 [WHY..] 사이의 이야기를 다룬다.<hr/>
+        첫사랑의 설렘을 노래한 [WHO!]부터 첫 이별의 상처를 담은 [WHY..], 만남과 이별 사이의 다양한 상황과 감정에 집중한 [HOW?]까지.<hr/>
+        BOYNEXTDOOR는 자신들의 언어로 다양한 감정을 노래하며, 누구나 한번쯤 겪는 첫사랑의 기억을 자극하고 공감대를 형성한다.<hr/><br>
+
+        요동치는 감정을 보다 선명하게 표현하기 위해, 이번 앨범에 ‘키치코어(KitschCore)’ 스타일을 접목했다. ‘키치코어’는 키치(Kitsch)와 자연스러운 멋을 의미하는 놈코어(Normcore)의 합성어다. ‘옆집 소년들’다운 친근함에 키치한 감성을 가미한 BOYNEXTDOOR만의 위트를 일컫는 말이다. 사랑하는 사람 때문에 혼란한 마음을 재치 있는 합성 사진으로 표현한 콘셉트 포토, 지구와 우주를 배경으로 삼은 독특한 뮤직비디오, 하이퍼 팝(Hyper pop)을 가미한 음악, 신선한 퍼포먼스 등 모든 영역에서 ‘키치코어’를 느낄 수 있다.<hr/><br>
+        <p>[ABOUT TRACKS]<hr/>
+
+        01. OUR<hr/>
+        “O U R O U R O U R Oh you are oh your oh you are”<hr/>
+        대망의 첫 데이트 날! 일어나자마자 날씨부터 체크하고 신경 써서 고른 옷을 입어 보지만, 약속 장소에 나온 너와 가까워질수록 오히려 머릿속이 하얘지기만 한다. 웃긴 이야기로 분위기를 풀어야 할지, 손을 잡아도 될지, 마음만 시끌시끌하다. 하지만 서서히 내 초점은 떨리는 ‘내’가 아닌 ‘너'에게 맞춰진다.<hr/><br>
+
+        02. Amnesia<hr/>
+        “매일같이 반복되네 think I have amnesia”<hr/>
+        하지만 고백이란 욕심으로는 해결될 수 없는 일이다. 상대도 날 좋아할 거라는 믿음이 필요하고, 내가 그래도 괜찮은 사람이라는 확신이 필요하니까. 고민 끝에 내린 결심이 후회로 남지 않도록 멋있어 보이기 위해 옷을 고르고, 향수를 뿌리며 마음을 가다듬어 본다. 들어봐, 나는 One and Only, 누구보다 멋진 사람이니까!<hr/><br>
+
+        03. So let’s go see the stars<hr/>
+        “매일 노래해 I love you 어? 뭐야 마이크 켜놓고 있었네?”<hr/>
+        유독 선명한 별이 많이 뜬 밤. 그런 오늘, 너의 집 앞에 찾아가 데이트를 신청해 본다. 기억 속에 간직하고 싶은 아름다운 이 밤, 문득 고백을 해 볼까 한다. 깜깜한 밤도, 빛나는 별도 너와 함께라서 의미가 있는 것 같아!<hr/><br>
+
+        04. Earth, Wind & Fire<hr/>
+        “You ain't just a girlfriend 그걸론 부족해 You’re my Earth, Wind & Fire”<hr/>
+        넌 마음을 전부 줄 것 같다가도 홱 돌아서고 자꾸만 갈팡질팡한다. 제멋대로 행동하는 게 꼭 내 약점을 공격하는 것만 같아 더 괴롭다. 내 ‘사랑 공식’이 도저히 통하지 않는 너. 불꽃이나 별, 바람이나 꽃처럼 너는 내 마음대로 할 수 없지만 동시에 내 모든 세상인가 봐.<hr/><br>
+
+        05. l i f e i s c o o l<hr/>
+        “Singing, laughing, life is cool”<hr/>
+        오랜만에 모두 한자리에 모였다. 내일 얼굴이 부어도 상관 않고, 눈치도 보지 말고, 그렇게 웃고 떠들다 보니 모두가 잠에 들기 아쉬워진 그런 밤이다. 우리는 참 많이 다르지만, 그런 우리라서 더 특별하게 느껴지기도 해!<hr/><br>
+
+        06. Dear. My Darling<hr/>
+        “이 글이 너에게 읽힐 쯤엔 You’re not darling anymore”<hr/>
+        헤어진 직후, 우리가 함께했던 시간을 돌이켜 본다. 너와 있을 때는 항상 지붕 위를 걷는 듯한 기분이었는데. 너에게도 이 시간이 너무 시리지 않은 기억으로 남았으면 한다. 애쓰며 붙잡진 않겠지만, 좋아했던 만큼 행복하기를 바랄게.<hr/><br></p>
+    </div>
+
+    <div class="track-info">
+        <div class="track-section">
+            <div class="track-label">TRACK</div>
+            <div class="track-content">
+                01 OUR<br>
+
+                02 Amnesia<br>
+
+                03 So let's go see the stars<br>
+
+                <div class ="special-shift">TITLE 04 Earth, Wind & Fire<br></div>
+
+                05 l i f e i s c o o l<br>
+
+                06 Dear. My Darling<br>
+
+                07 Earth, Wind & Fire (English ver.)<br>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="track-label">VIDEO</div>
+    <div class="song-list">
+        <button data-video="https://www.youtube.com/embed/u9nP3qXQA4o">Earth, Wind & Fire</button>
+    </div>
+    <div class="video-container">
+        <iframe id="videoPlayer" src="https://www.youtube.com/embed/u9nP3qXQA4o" allowfullscreen></iframe>
+    </div>
+
+    <script>
+        const buttons = document.querySelectorAll('.song-list button');
+        const videoPlayer = document.getElementById('videoPlayer');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                // 移除所有按鈕的 active 狀態
+                buttons.forEach(btn => btn.classList.remove('active'));
+                // 為當前按鈕添加 active 狀態
+                button.classList.add('active');
+                // 切換影片
+                const videoURL = button.getAttribute('data-video');
+                videoPlayer.src = videoURL;
+            });
+        });
+    </script>
+
+    <div class="social-bar">
+        <a href="https://x.com/BOYNEXTDOOR_KOZ" target="_blank"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://www.facebook.com/share/1AbrE2jmSc/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/boynextdoor_official" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://youtube.com/@boynextdoor_official" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="https://weibo.com/u/7832571640" target="_blank"><i class="fab fa-weibo"></i></a>
+        <a href="https://www.tiktok.com/@boynextdoor_official" target="_blank"><i class="fab fa-tiktok"></i></a>
+    </div>
+
+    <footer>
+        KOZ ENTERTAINMENT<br>韓國首爾龍山區漢江大路42號 04389<br>ALL RIGHTS RESERVED. © 2025 KOZ ENTERTAINMENT<br>隱私政策
+    </footer>
+
+<button id="backToTop" title="回到上方">↑</button>
+
+</body>
+</html>
