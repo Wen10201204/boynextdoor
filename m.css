@@ -1,0 +1,382 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    overflow-x: hidden;
+    background-color: #fff;
+    color: #000;
+}
+
+.container {
+    display: flex;
+    width: 200%;
+    overflow: hidden;
+}
+
+.page {
+    width: 50%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    padding: 30px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+}
+
+.logo {
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.nav {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-item {
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    position: relative;
+    padding: 5px 0;
+}
+
+.nav-item.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #000;
+}
+
+/* Hero Section 滿版設定 */
+.hero-section {
+    background-color: black;
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh; /* ❗ 滿版設定 */
+}
+
+.group-name {
+    font-size: 60px;
+    font-weight: bold;
+}
+
+.group-name span {
+    display: block;
+}
+
+/* 移到下方的文字 */
+.intro-text {
+    font-size: 18px;
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 0 40px;
+    line-height: 1.6;
+    text-align: center;
+    color: #333;
+}
+
+/* Cards 區塊 */
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px;
+}
+
+
+.profile-page {
+    background-color: #fff;
+}
+
+.info-section {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    margin-bottom: 60px;
+}
+
+.info-block {
+    text-align: center;
+}
+
+.info-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.debut-date {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.members-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.member {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.description {
+    max-width: 800px;
+    margin: 0 auto 60px;
+    padding: 0 40px;
+    line-height: 1.8;
+    font-size: 16px;
+    text-align: justify; /* 加上這行就能左右對齊 */
+}
+
+.discography-page {
+    background-color: #f9f9f9;
+}
+
+.discography-hero {
+    padding: 60px 40px;
+    text-align: center;
+}
+
+.album-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.song-title {
+    font-size: 60px;
+    font-weight: bold;
+    margin-bottom: 40px;
+    letter-spacing: -2px;
+}
+
+.song-description {
+    max-width: 700px;
+    margin: 0 auto 60px;
+    line-height: 1.8;
+    font-size: 16px;
+}
+
+.track-info {
+    max-width: 600px;
+    margin: 0 auto 60px;
+    padding: 0 40px;
+}
+
+.track-section {
+    margin-bottom: 30px;
+}
+
+.track-label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.track-content {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.video-section {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.video-title {
+    font-size: 60px;
+    font-weight: bold;
+    letter-spacing: -2px;
+}
+
+footer {
+    padding: 40px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.8;
+    margin-top: auto;
+    border-top: 1px solid #eee;
+}
+
+.member-photos img {
+    width: 180px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.member-photos img:hover {
+    transform: scale(1.05);
+}
+
+
+.member-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 每列 3 張卡片 */
+    gap: 50px 80px; /* 卡片之間的距離 */
+    justify-items: center; /* 讓卡片置中 */
+    padding: 20px;
+
+    max-width: 800px;     /* 控制最大寬度，可調整數值 */
+    margin: 0 auto;
+
+    margin-bottom: 100px
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.photo-card {
+    width: 200px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.9);
+    border-radius: 12px;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* 🌟 平滑動畫 */
+}
+
+.photo-card:hover {
+    transform: translateY(-10px); /* 🌟 滑鼠懸停時上移 */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6); /* 🌟 陰影更明顯 */
+}
+
+
+.photo-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.photo-card .name {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: black;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    padding: 20px;
+    font-size: 20px;
+}
+
+
+
+
+
+#backToTop {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 3rem;
+    height: 3rem;
+    background-color: #333;
+    color: white;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 1000;
+}
+
+#backToTop:hover {
+    transform: translateY(-4px);
+    background-color: #000;
+}
+
+/* 顯示時 */
+#backToTop.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+.footer-social-bar .social-icon {
+    display: inline-block;
+    margin: 0 10px;
+    font-size: 24px;
+    color: #555;
+    transition: 0.3s;
+}
+
+.footer-social-bar .social-icon:hover {
+    color: #000;
+}
+
+
+
+
+
+
+
+/* 灰色背景的社群列 */
+.social-bar {
+    background-color: #d3d3d3;
+    padding: 20px;
+    text-align: center;
+}
+
+.social-bar a {
+    margin: 0 10px;
+    font-size: 24px;
+    color: #666;
+    background-color: #bbb;
+    border-radius: 50%;
+    padding: 12px;
+    display: inline-block;
+}
+
+
+.footer-info .logo {
+    height: 50px;
+}
+
+.footer-info .info {
+    max-width: 600px;
+}
+
+.social-bar a {
+    width: 50px;               /* 固定寬度 */
+    height: 50px;              /* 固定高度 */
+    line-height: 20px;         /* 讓圖示垂直置中 */
+    text-align: center;        /* 水平置中 */
+    margin: 0 10px;
+    font-size: 24px;
+    color: #666;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;    /* 避免下方出現空隙 */
+}
