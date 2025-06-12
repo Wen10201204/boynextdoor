@@ -173,24 +173,76 @@
     }
 
 
-    @media (max-width: 768px) {
-        .item {
-            max-width: 100%;
-            flex: 1 1 100%;
-        }
-        iframe {
-            height: 240px;
-        }
-    }
-
-
+    /* 手機版響應式調整 (max-width: 600px) */
     @media (max-width: 600px) {
+        /* Header 調整 */
+        header {
+            padding: 15px 20px;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        /* Footer 調整 */
+        footer {
+            padding: 20px 10px;
+            font-size: 10px;
+            line-height: 1.4;
+        }
+
+        /* pyramid 排列和間距 */
+        .pyramid {
+            margin: 50px 10px;
+            -webkit-overflow-scrolling: touch; /* 平滑滾動 */
+        }
+
+        .row {
+            flex-direction: column;  /* 改為直排 */
+            align-items: center;     /* 置中每張卡 */
+            gap: 30px;               /* 卡片間距調整 */
+            padding: 10px 0;
+        }
+
+        .item {
+            width: 90%;      /* 寬度縮小 */
+            max-width: 300px;
+            height: auto;    /* 高度自適應 */
+        }
+
+        .image-container .overlay .text {
+            font-size: 12px;
+        }
+
+        /* 社交按鈕 */
         .social-bar a {
             margin: 10px 5px;
             width: 40px;
             height: 40px;
             line-height: 40px;
             font-size: 18px;
+        }
+
+        iframe {
+            height: 240px;
+        }
+    }
+
+    /* 超小螢幕調整 (max-width: 400px) */
+    @media (max-width: 400px) {
+        .social-bar a {
+            width: 35px;
+            height: 35px;
+            line-height: 35px;
+            font-size: 16px;
+            margin: 8px 3px;
+        }
+
+        .item {
+            width: 90vw;
+            height: auto;
+        }
+
+        .pyramid {
+            margin: 30px 5px;
         }
     }
 

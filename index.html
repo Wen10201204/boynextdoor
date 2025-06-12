@@ -2,6 +2,7 @@
 <html lang="zh">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BOYNEXTDOOR</title>
   <style>
     body, html {
@@ -14,12 +15,16 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: relative;
     }
     .logo {
       font-weight: bold;
       font-size: 20px;
     }
-
+    .nav {
+      display: flex;
+      align-items: center;
+    }
     .nav a {
       margin-left: 20px;
       cursor: pointer;
@@ -30,15 +35,20 @@
     }
     .nav a.active {
       color: #000;
-      border-bottom: none;
-      margin-bottom: 0;
     }
-    iframe {
-      width: 100%;
-      height: calc(100vh - 70px); /* 扣除header高度 */
-      border: none;
-      display: block;
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
     }
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background-color: #000;
+      margin: 4px 0;
+    }
+
+    /* divider */
     .divider {
       display: block;
       height: 1px;
@@ -49,17 +59,34 @@
       line-height: 0;
     }
 
+    iframe {
+      width: 100%;
+      height: calc(100vh - 70px);
+      border: none;
+      display: block;
+    }
+
+    /* 手機樣式 */
     @media (max-width: 768px) {
-      .song-title {
-        font-size: 40px;
+      .hamburger {
+        display: flex;
       }
-
-      .track-content {
-        font-size: 16px;
+      .nav {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background: white;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        z-index: 1000;
       }
-
-      iframe {
-        height: 240px;
+      .nav.show {
+        display: flex;
+      }
+      .nav a {
+        margin: 10px 20px;
       }
     }
   </style>
@@ -67,7 +94,12 @@
 <body>
 <header>
   <div class="logo">BOYNEXTDOOR</div>
-  <nav class="nav">
+  <div class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <nav class="nav" id="navMenu">
     <a href="#" data-src="profile.html" class="active">PROFILE</a>
     <a href="#" data-src="discography.html">DISCOGRAPHY</a>
   </nav>
@@ -78,22 +110,30 @@
 <script>
   const navLinks = document.querySelectorAll('.nav a');
   const iframe = document.getElementById('contentFrame');
+  const hamburger = document.getElementById('hamburger');
+  const navMenu = document.getElementById('navMenu');
 
+  // 切換選單顯示
+  hamburger.addEventListener('click', () => {
+    navMenu.classList.toggle('show');
+  });
+
+  // 點擊導覽連結切換頁面
   navLinks.forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
-      // 切換 active 樣式
       navLinks.forEach(l => l.classList.remove('active'));
       link.classList.add('active');
-      // 切換 iframe 頁面
       iframe.src = link.dataset.src;
+      navMenu.classList.remove('show'); // 點完自動收起選單
     });
   });
+
+  // 初始載入 profile.html
   window.addEventListener('DOMContentLoaded', () => {
-    const defaultPage = "profile.html"; // 預設載入頁面
+    const defaultPage = "profile.html";
     document.getElementById('contentFrame').src = defaultPage;
   });
-
 </script>
 </body>
 </html>
