@@ -357,10 +357,10 @@
             }
 
             .social-bar a {
-                width: 30px;
-                height: 30px;
-                font-size: 15px;
-                padding: 6px;
+                display: flex;
+                flex-direction: row;       /* 強制橫向排列 */
+                justify-content: center;
+                flex-wrap: nowrap;
             }
 
                 /* 讓 info-section 的 gap 改小一點，更適合手機 */
